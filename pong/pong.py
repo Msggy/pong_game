@@ -44,7 +44,7 @@ class Ball(GameSprite):
 #sprites
 player_r = Player("Bars.png", 600, 200, 10)
 player_l = Player("Bars.png", 20, 200, 10)
-ball = Ball(10,"Ball.png",150,200)
+ball = Ball("Ball.png", 150, 200, 10)
 
 while game:
     janela.blit(background, (0, 0))  # Must include coordinates!
