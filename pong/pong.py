@@ -37,17 +37,23 @@ class Player(GameSprite):
         if keys_pressed[K_s] and self.rect.y <= 400:
             self.rect.y += 10
     
+class Ball(GameSprite):
+    def update(self):
+        pass
+
 #sprites
 player_r = Player("Bars.png", 600, 200, 10)
 player_l = Player("Bars.png", 20, 200, 10)
+ball = Ball(10,"Ball.png",150,200)
 
 while game:
     janela.blit(background, (0, 0))  # Must include coordinates!
+    ball.reset()
+    ball.update()
     player_r.update_r()
     player_r.reset()
     player_l.update_l()
     player_l.reset()
-
     for e in event.get():
         if e.type == QUIT:
             game = False
