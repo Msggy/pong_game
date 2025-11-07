@@ -15,7 +15,7 @@ FPS = 60
 class GameSprite(sprite.Sprite):
     def __init__(self, speed, player_image,y,x):
         self.speed = speed
-        self.image = transform.scale(image.load(player_image),(20,20))
+        self.image = transform.scale(image.load(player_image),(30,30))
         self.rect = self.image.get_rect()
         self.rect.y = y
         self.rect.x = x
