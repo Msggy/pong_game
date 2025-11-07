@@ -13,7 +13,6 @@ FPS = 60
 
 class GameSprite(sprite.Sprite):
     def __init__(self, pimage, x, y, speed):
-        super.__init__()
         self.image = transform.scale(image.load(pimage), (80, 80))
         self.speed = speed
         self.rect = self.image.get_rect()
@@ -26,23 +25,28 @@ class GameSprite(sprite.Sprite):
 class Player(GameSprite):
     def update_r(self):
         keys_pressed = key.get_pressed()
-        if keys_pressed[K_UP]:
+        if keys_pressed[K_UP] and self.rect.y >= 20:
             self.rect.y -= 10
-        if keys_pressed[K_DOWN]:
+        if keys_pressed[K_DOWN] and self.rect.y <= 400:
             self.rect.y += 10
     
     def update_l(self):
         keys_pressed = key.get_pressed()
-        if keys_pressed[K_w]:
+        if keys_pressed[K_w] and self.rect.y >= 20:
             self.rect.y -= 10
-        if keys_pressed[K_s]:
+        if keys_pressed[K_s] and self.rect.y <= 400:
             self.rect.y += 10
     
 #sprites
-
+player_r = Player("Bars.png", 600, 200, 10)
+player_l = Player("Bars.png", 20, 200, 10)
 
 while game:
     janela.blit(background, (0, 0))  # Must include coordinates!
+    player_r.update_r()
+    player_r.reset()
+    player_l.update_l()
+    player_l.reset()
 
     for e in event.get():
         if e.type == QUIT:
