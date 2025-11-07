@@ -9,6 +9,36 @@ game = True
 clock = time.Clock()
 FPS = 60
 
+class GameSprite(sprite.Sprite):
+    def __init__(self, pimage, x, y, speed):
+        super.__init__()
+        self.image = transform.scale(image.load(pimage), (80, 80))
+        self.speed = speed
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+    
+    def reset(self):
+        janela.blit(self.image, (self.rect.x, self.rect.y))
+
+class Player(GameSprite):
+    def update_r(self):
+        keys_pressed = key.get_pressed()
+        if keys_pressed[K_UP]:
+            self.rect.y -= 10
+        if keys_pressed[K_DOWN]:
+            self.rect.y += 10
+    
+    def update_l(self):
+        keys_pressed = key.get_pressed()
+        if keys_pressed[K_w]:
+            self.rect.y -= 10
+        if keys_pressed[K_s]:
+            self.rect.y += 10
+    
+#sprites
+
+
 while game:
     janela.fill((255, 145, 227))
 
