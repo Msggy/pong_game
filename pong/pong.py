@@ -24,8 +24,35 @@ class GameSprite(sprite.Sprite):
         janela.blit(self.image,(self.rect.x,self.rect.y))
 
 class Ball(GameSprite):
+    directionx = "left"
+    directiony = "left"
     def update(self):
-        pass
+
+        if self.rect.x <= 0:
+            self.directionx = "right"
+
+        if self.rect.x >= 700:
+            self.directionx = "left"
+
+
+        if self.rect.y <= 0:
+            self.directiony = "right"
+
+        if self.rect.y >= 500:
+            self.directiony = "left"
+
+        if self.directionx == "left":
+           self.rect.x -= self.speed
+        else:
+            self.rect.x += self.speed
+        if self.directiony == "left":
+           self.rect.y -= self.speed
+        else:
+            self.rect.y += self.speed
+
+
+
+
     
 ball = Ball(10,"Ball.png",150,200)
 while game:
