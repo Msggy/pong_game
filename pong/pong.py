@@ -62,6 +62,13 @@ class Ball(GameSprite):
            self.rect.y -= self.speed
         else:
             self.rect.y += self.speed
+        
+        if self.rect.colliderect(player_l.rect):
+
+            self.directionx = "right"
+        if self.rect.colliderect(player_r.rect):
+
+            self.directionx = "left"
 
 
 
