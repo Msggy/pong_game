@@ -12,12 +12,14 @@ clock = time.Clock()
 FPS = 60
 
 class GameSprite(sprite.Sprite):
-    def __init__(self, pimage, x, y, speed):
-        self.image = transform.scale(image.load(pimage), (80, 80))
+    def __init__(self, pimage, x, y, speed, sizex, sizey):
+        self.image = transform.scale(image.load(pimage), (sizex, sizey))
         self.speed = speed
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        self.sizex = sizex
+        self.sizey = sizey
     
     def reset(self):
         janela.blit(self.image, (self.rect.x, self.rect.y))
@@ -63,13 +65,10 @@ class Ball(GameSprite):
         else:
             self.rect.y += self.speed
 
-
-
-
 #sprites
-player_r = Player("Bars.png", 600, 200, 10)
-player_l = Player("Bars.png", 20, 200, 10)
-ball = Ball("Ball.png", 150, 200, 5)
+player_r = Player("Bars.png", 600, 200, 10, 40, 100)
+player_l = Player("Bars.png", 20, 200, 10, 40, 100)
+ball = Ball("Ball.png", 150, 200, 5, 40, 40)
 while game:
     janela.blit(background, (0, 0))  # Must include coordinates!
     ball.reset()
